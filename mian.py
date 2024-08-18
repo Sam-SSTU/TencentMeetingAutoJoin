@@ -4,40 +4,27 @@ import pyautogui
 import time
 from datetime import datetime
 from goto import with_goto
-import sys
-import os
-import pyautogui
-import time
-import goto
-from dominate.tags import label
-import goto
-from dominate.tags import label
-import goto
-from dominate.tags import label
-from goto import with_goto
-from goto import with_goto
-import goto
 from dominate.tags import label
 from playsound import playsound
-from goto import with_goto
 
 
-def today1():
+
+def today1():#get day of week
     global df,today
     today = datetime.now().weekday()
     
-    if today ==0:
+    if today ==0:#monday
         df = pd.read_excel('timings.xlsx',index_col=False)
-    elif today==1:
+    elif today==1:#tuesday
         df = pd.read_excel('timings1.xlsx',index_col=False)
-    elif today==2:
+    elif today==2:#wednesday
         df = pd.read_excel('timings2.xlsx',index_col=False)
-    elif today==3:
+    elif today==3:#thursday
         df = pd.read_excel('timings3.xlsx',index_col=False)
         
-    elif today==4:
+    elif today==4:#firday
         df = pd.read_excel('timings4.xlsx',index_col=False)
-    else:
+    else:#Saturday&Sunday
         df = pd.read_excel('timingsN.xlsx',index_col=False)
 
 
@@ -49,15 +36,15 @@ def mian():
     now = datetime.now().strftime("%H:%M")
     
     if now in str(df['Timings']):
-        today1()
-        mylist=df["Timings"]
+        today1()#update date
+        mylist=df["Timings"]#find meeting number in the excel file
         mylist=[i.strftime("%H:%M") for i in mylist]
         c= [i for i in range(len(mylist)) if mylist[i]==now]
         row = df.loc[c] 
         meeting_id = str(row.iloc[0,1])  
         #password= str(row.iloc[0,2])  
         time.sleep(5)
-        signIn(meeting_id)
+        signIn(meeting_id)#sign in
         
         print('signed in')
         
@@ -71,17 +58,17 @@ def mian():
         
 
 
-def signIn(meeting_id):
+def signIn(meeting_id):#sign in
     i=1
-    if meeting_id=='114514':
+    if meeting_id=='NULL':
         print('No Meeting Today')
         
     else:
         
-        #Open's Zoom Application from the specified location
-        os.startfile("D:\Program Files (x86)\Tencent\WeMeet\wemeetapp.exe")
+        #Open's Tencent meeting application from the specified location
+        os.startfile("D:\Program Files (x86)\Tencent\WeMeet\wemeetapp.exe")#Start tencent meeting; modify and change it to your own location
         time.sleep(6)
-        nojoin=pyautogui.locateCenterOnScreen("exit.png")
+        nojoin=pyautogui.locateCenterOnScreen("exit.png")#not sure what this step for, the exit button isn't there any more after somr update
         if nojoin is not None:
             
             
@@ -92,7 +79,7 @@ def signIn(meeting_id):
         joinbtn=pyautogui.locateCenterOnScreen("joinameeting.png")
         pyautogui.moveTo(joinbtn)
         pyautogui.click()
-        time.sleep(2)
+        time.sleep(2)#doesn't support meeting password, add it if u want!
         '''
         #Type the meeting id
         meetingidbtn=pyautogui.locateCenterOnScreen("meetingid.png")
@@ -110,13 +97,13 @@ def signIn(meeting_id):
             '''
         #To join
         nojoin=pyautogui.locateCenterOnScreen("exit.png")
-        if nojoin is not None:
+        if nojoin is not None:#locate the window? not sure
             
             
             pyautogui.moveTo(nojoin)
             pyautogui.click()
             time.sleep(1)
-        pyautogui.write(meeting_id)
+        pyautogui.write(meeting_id)#write meeting id
         time.sleep(1)
         join=pyautogui.locateCenterOnScreen("join.png")
         pyautogui.moveTo(join)
@@ -126,7 +113,7 @@ def signIn(meeting_id):
         pyautogui.moveTo(join)
         
         pyautogui.click()
-        playsound('succeessful.mp3')
+        playsound('succeessful.mp3')#play sound
         
         playsound('succeessful.mp3')
         
@@ -149,7 +136,7 @@ def signIn(meeting_id):
 
 
 
-today1()
-while True:
+today1()#update date, in case of bug
 
+while True:
     mian()
