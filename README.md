@@ -2,7 +2,7 @@
 根据星期几自入会（腾讯会议）。Auto join tencent meeting(VooV meeting) according to the day of week.
 
 
-<a href="./readme/Englsih.md"><img alt="README in English" src="https://img.shields.io/badge/English-lightgrey"></a>
+<a href="./readme/English.md"><img alt="README in English" src="https://img.shields.io/badge/English-lightgrey"></a>
 <a href="./readme/Chinese.md"><img alt="简体中文" src="https://img.shields.io/badge/简体中文-lightgrey"></a>
 
 ## License & Copyright
