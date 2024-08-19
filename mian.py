@@ -98,7 +98,7 @@ def signIn(meeting_id):#sign in
         #To join
         nojoin=pyautogui.locateCenterOnScreen("exit.png")
         if nojoin is not None:#locate the window? not sure
-            
+
             
             pyautogui.moveTo(nojoin)
             pyautogui.click()
