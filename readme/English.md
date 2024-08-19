@@ -39,9 +39,9 @@ Once you have completed the above steps, you can run the script in the command l
 
 The script will automatically match the current time with the meeting times in the Excel file and will launch Tencent Meeting to log in automatically.
 
-### 2.1 How to Exit
+### 2.1 How to Exit Meeting
 
-The exit functionality was not written into the script. Instead, a scheduled task executes a `.cmd` script. If you need to use this, you will need to modify the Tencent Meeting path in the `.cmd` file.
+The exit functionality was not written into the script. Instead, a scheduled task runs a `.cmd` script can execute the meeting. If you need to use this, you will need to modify the Tencent Meeting path in the `.cmd` file.
 
 I use the following timer scripts: [52pojie.cn](https://www.52pojie.cn/thread-716138-1-1.html) or [onlinedown.net](https://www.onlinedown.net/soft/1217136.htm)
 
